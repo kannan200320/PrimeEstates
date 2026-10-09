@@ -24,10 +24,6 @@ export const AgentsPage = ({ onSelectAgent }) => {
         
         {/* Header */}
         <div className="text-center max-w-3xl mx-auto mb-10">
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-brand-50 border border-brand-200 text-brand-700 text-xs font-bold uppercase tracking-wider mb-3">
-            <AwardIcon className="w-3.5 h-3.5" />
-            <span>Top 1% Luxury Realtors</span>
-          </div>
           <h1 className="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight">
             Meet Our Elite Real Estate Advisors
           </h1>
@@ -73,20 +69,6 @@ export const AgentsPage = ({ onSelectAgent }) => {
               onSelectAgent={onSelectAgent}
             />
           ))}
-        </div>
-
-        {/* Advisory Promise Banner */}
-        <div className="mt-16 bg-white p-8 rounded-3xl border border-slate-200 shadow-sm text-center max-w-3xl mx-auto">
-          <h3 className="text-xl font-bold text-slate-900">Looking to Join Our Luxury Brokerage?</h3>
-          <p className="text-xs text-slate-500 mt-2 leading-relaxed">
-            We are always selectively recruiting top producers with distinguished expertise in high-net-worth clientele and architectural properties.
-          </p>
-          <a
-            href="mailto:careers@primeestates.com"
-            className="inline-block mt-4 px-5 py-2.5 bg-slate-900 hover:bg-brand-600 text-white text-xs font-bold rounded-xl transition-all"
-          >
-            Inquire Confidential Partnership
-          </a>
         </div>
 
       </div>

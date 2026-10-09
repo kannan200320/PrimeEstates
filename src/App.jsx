@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import './App.css';
 import { Navbar } from './components/common/Navbar';
 import { Footer } from './components/common/Footer';
-import { AuthModal } from './components/common/AuthModal';
+import { AuthPage } from './pages/AuthPage';
 import { ToastNotification } from './components/common/ToastNotification';
 import { HomePage } from './pages/HomePage';
 import { PropertiesPage } from './pages/PropertiesPage';
@@ -38,9 +38,6 @@ function App() {
       return null;
     }
   });
-
-  const [isAuthModalOpen, setIsAuthModalOpen] = useState(false);
-  const [authModalMode, setAuthModalMode] = useState('login');
 
   // Floating Toast Notifications
   const [toast, setToast] = useState(null);
@@ -109,32 +106,26 @@ function App() {
     }
   };
 
-  const handleOpenAuth = (mode = 'login') => {
-    setAuthModalMode(mode);
-    setIsAuthModalOpen(true);
-  };
-
-  const handleAuthSuccess = (user, message) => {
+  const handleAuthSuccess = (user) => {
     setCurrentUser(user);
-    showToast(message);
   };
 
   const handleLogout = () => {
     setCurrentUser(null);
-    showToast('Signed out of PrimeEstates');
   };
 
   return (
     <div className="flex flex-col min-h-screen bg-slate-50 font-sans text-slate-800 antialiased selection:bg-brand-500 selection:text-white">
-      {/* Sticky Global Navigation */}
-      <Navbar
-        currentPage={currentPage}
-        onNavigate={handleNavigate}
-        savedCount={savedPropertyIds.length}
-        currentUser={currentUser}
-        onOpenAuth={handleOpenAuth}
-        onLogout={handleLogout}
-      />
+      {/* Sticky Global Navigation (Hidden on Sign In / Register page) */}
+      {currentPage !== 'auth' && (
+        <Navbar
+          currentPage={currentPage}
+          onNavigate={handleNavigate}
+          savedCount={savedPropertyIds.length}
+          currentUser={currentUser}
+          onLogout={handleLogout}
+        />
+      )}
 
       {/* Main Page Content Body */}
       <main className="flex-grow">
@@ -200,21 +191,23 @@ function App() {
             onNavigate={handleNavigate}
           />
         )}
+
+        {currentPage === 'auth' && (
+          <AuthPage
+            initialMode={filterParams.mode || 'login'}
+            onAuthSuccess={handleAuthSuccess}
+            onNavigate={handleNavigate}
+          />
+        )}
       </main>
 
       {/* Global Footer */}
-      <Footer
-        onNavigate={handleNavigate}
-        onShowToast={showToast}
-      />
-
-      {/* Login & Sign Up Modal */}
-      <AuthModal
-        isOpen={isAuthModalOpen}
-        onClose={() => setIsAuthModalOpen(false)}
-        initialMode={authModalMode}
-        onAuthSuccess={handleAuthSuccess}
-      />
+      {currentPage !== 'auth' && (
+        <Footer
+          onNavigate={handleNavigate}
+          onShowToast={showToast}
+        />
+      )}
 
       {/* Interactive Toast Notifications */}
       <ToastNotification

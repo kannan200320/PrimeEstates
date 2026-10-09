@@ -2,8 +2,6 @@ import React, { useState, useMemo, useEffect } from 'react';
 import { 
   SearchIcon, 
   FilterIcon, 
-  GridIcon, 
-  ListIcon, 
   XIcon, 
   MapPinIcon, 
   ChevronDownIcon 
@@ -24,10 +22,8 @@ export const PropertiesPage = ({
   const [minPrice, setMinPrice] = useState('');
   const [maxPrice, setMaxPrice] = useState('');
   const [minBeds, setMinBeds] = useState('All');
-  const [minBaths, setMinBaths] = useState('All');
   const [selectedAmenities, setSelectedAmenities] = useState([]);
   const [sortBy, setSortBy] = useState('featured');
-  const [viewMode, setViewMode] = useState('grid');
   const [mobileFilterOpen, setMobileFilterOpen] = useState(false);
 
   // Sync initialFilters if navigated with new state
@@ -81,7 +77,6 @@ export const PropertiesPage = ({
     setMinPrice('');
     setMaxPrice('');
     setMinBeds('All');
-    setMinBaths('All');
     setSelectedAmenities([]);
     setSortBy('featured');
   };
@@ -125,11 +120,6 @@ export const PropertiesPage = ({
         return false;
       }
 
-      // Baths filter
-      if (minBaths !== 'All' && prop.baths < Number(minBaths)) {
-        return false;
-      }
-
       // Amenities filter
       if (selectedAmenities.length > 0) {
         const hasAllAmenities = selectedAmenities.every((amenity) => 
@@ -149,7 +139,7 @@ export const PropertiesPage = ({
       if (!a.featured && b.featured) return 1;
       return 0;
     });
-  }, [keyword, status, propertyType, minPrice, maxPrice, minBeds, minBaths, selectedAmenities, sortBy]);
+  }, [keyword, status, propertyType, minPrice, maxPrice, minBeds, selectedAmenities, sortBy]);
 
   const activeFiltersCount = 
     (keyword ? 1 : 0) +
@@ -157,7 +147,6 @@ export const PropertiesPage = ({
     (propertyType !== 'All' ? 1 : 0) +
     (minPrice || maxPrice ? 1 : 0) +
     (minBeds !== 'All' ? 1 : 0) +
-    (minBaths !== 'All' ? 1 : 0) +
     selectedAmenities.length;
 
   return (
@@ -166,11 +155,6 @@ export const PropertiesPage = ({
         
         {/* Page Header */}
         <div className="mb-8">
-          <div className="flex items-center gap-2 text-xs font-semibold text-slate-400 uppercase tracking-wider mb-1">
-            <span>Portfolio</span>
-            <span>/</span>
-            <span className="text-brand-600">Explore Properties</span>
-          </div>
           <h1 className="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight">
             Curated Real Estate Collection
           </h1>
@@ -246,29 +230,6 @@ export const PropertiesPage = ({
                 <option value="sqft-desc">Largest Area</option>
               </select>
             </div>
-
-            {/* View Mode Toggle */}
-            <div className="flex items-center border border-slate-200 rounded-xl p-0.5 bg-slate-50">
-              <button
-                onClick={() => setViewMode('grid')}
-                className={`p-1.5 rounded-lg transition-colors ${
-                  viewMode === 'grid' ? 'bg-white shadow-xs text-brand-600' : 'text-slate-400 hover:text-slate-700'
-                }`}
-                title="Grid View"
-              >
-                <GridIcon className="w-4 h-4" />
-              </button>
-              <button
-                onClick={() => setViewMode('list')}
-                className={`p-1.5 rounded-lg transition-colors ${
-                  viewMode === 'list' ? 'bg-white shadow-xs text-brand-600' : 'text-slate-400 hover:text-slate-700'
-                }`}
-                title="List View"
-              >
-                <ListIcon className="w-4 h-4" />
-              </button>
-            </div>
-
           </div>
 
         </div>
@@ -318,33 +279,6 @@ export const PropertiesPage = ({
                 </div>
               </div>
 
-              {/* Price Range Filter */}
-              <div className="pt-4 border-t border-slate-100">
-                <label className="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-2">
-                  Price Range ($ USD)
-                </label>
-                <div className="grid grid-cols-2 gap-2">
-                  <div>
-                    <input
-                      type="number"
-                      placeholder="Min Price"
-                      value={minPrice}
-                      onChange={(e) => setMinPrice(e.target.value)}
-                      className="w-full px-2.5 py-1.5 text-xs border border-slate-200 rounded-lg focus:outline-none focus:ring-1 focus:ring-brand-500"
-                    />
-                  </div>
-                  <div>
-                    <input
-                      type="number"
-                      placeholder="Max Price"
-                      value={maxPrice}
-                      onChange={(e) => setMaxPrice(e.target.value)}
-                      className="w-full px-2.5 py-1.5 text-xs border border-slate-200 rounded-lg focus:outline-none focus:ring-1 focus:ring-brand-500"
-                    />
-                  </div>
-                </div>
-              </div>
-
               {/* Bedrooms Filter */}
               <div className="pt-4 border-t border-slate-100">
                 <label className="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-2">
@@ -363,29 +297,6 @@ export const PropertiesPage = ({
                       }`}
                     >
                       {beds === 'All' ? 'Any' : `${beds}+`}
-                    </button>
-                  ))}
-                </div>
-              </div>
-
-              {/* Bathrooms Filter */}
-              <div className="pt-4 border-t border-slate-100">
-                <label className="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-2">
-                  Bathrooms
-                </label>
-                <div className="flex gap-1.5">
-                  {['All', '1', '2', '3', '4'].map((baths) => (
-                    <button
-                      key={baths}
-                      type="button"
-                      onClick={() => setMinBaths(baths)}
-                      className={`flex-1 py-1 text-xs font-semibold rounded-lg border transition-all ${
-                        minBaths === baths
-                          ? 'border-brand-600 bg-brand-50 text-brand-700 font-bold'
-                          : 'border-slate-200 text-slate-600 hover:bg-slate-50'
-                      }`}
-                    >
-                      {baths === 'All' ? 'Any' : `${baths}+`}
                     </button>
                   ))}
                 </div>
@@ -472,7 +383,7 @@ export const PropertiesPage = ({
 
             {/* Results Output */}
             {filteredProperties.length > 0 ? (
-              <div className={viewMode === 'grid' ? "grid grid-cols-1 md:grid-cols-2 gap-6" : "space-y-6"}>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 {filteredProperties.map((property) => (
                   <PropertyCard
                     key={property.id}
@@ -480,7 +391,6 @@ export const PropertiesPage = ({
                     onSelectProperty={onSelectProperty}
                     isSaved={savedPropertyIds.includes(property.id)}
                     onToggleSave={onToggleSave}
-                    viewMode={viewMode}
                   />
                 ))}
               </div>

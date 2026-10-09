@@ -1,12 +1,11 @@
 import React, { useState } from 'react';
-import { HeartIcon, MenuIcon, XIcon, UserIcon } from './Icons';
+import { HeartIcon, MenuIcon, XIcon, UserIcon, HomeLogoIcon } from './Icons';
 
 export const Navbar = ({ 
   currentPage, 
   onNavigate, 
   savedCount, 
   currentUser, 
-  onOpenAuth, 
   onLogout 
 }) => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -29,13 +28,13 @@ export const Navbar = ({
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-20">
           
-          {/* Logo */}
+          {/* Logo with Home Icon (No "P") */}
           <div 
             onClick={() => onNavigate('home')} 
             className="flex items-center gap-3 cursor-pointer group"
           >
             <div className="w-10 h-10 rounded-xl bg-gradient-to-tr from-brand-700 via-brand-600 to-emerald-400 flex items-center justify-center text-white shadow-md shadow-brand-500/20 group-hover:scale-105 transition-transform">
-              <span className="font-serif font-bold text-xl tracking-tight">P</span>
+              <HomeLogoIcon className="w-5 h-5 text-white" />
             </div>
             <div>
               <span className="text-xl font-extrabold tracking-tight text-slate-900 group-hover:text-brand-600 transition-colors">
@@ -69,20 +68,20 @@ export const Navbar = ({
 
           {/* Desktop Right Actions */}
           <div className="hidden md:flex items-center gap-3">
-            {/* Saved Properties Pill */}
+            {/* Saved Properties (ONLY Heart Symbol as in 2nd image) */}
             <button
               onClick={() => onNavigate('saved')}
-              className={`relative p-2.5 rounded-xl border transition-all flex items-center gap-2 ${
+              className={`relative p-2.5 rounded-xl border transition-all flex items-center justify-center ${
                 currentPage === 'saved'
                   ? 'border-rose-300 bg-rose-50 text-rose-600'
                   : 'border-slate-200 text-slate-700 hover:border-rose-200 hover:bg-rose-50/40 hover:text-rose-600'
               }`}
-              title="Saved Properties"
+              title="Saved Favorites"
+              aria-label="Saved Favorites"
             >
-              <HeartIcon className="w-4 h-4" filled={savedCount > 0} />
-              <span className="text-xs font-semibold">Favorites</span>
+              <HeartIcon className="w-5 h-5 text-rose-500" filled={savedCount > 0} />
               {savedCount > 0 && (
-                <span className="ml-1 px-1.5 py-0.5 text-[10px] font-extrabold bg-rose-500 text-white rounded-full">
+                <span className="absolute -top-1.5 -right-1.5 min-w-[20px] h-5 px-1.5 flex items-center justify-center text-[10px] font-extrabold bg-rose-500 text-white rounded-full shadow-sm">
                   {savedCount}
                 </span>
               )}
@@ -147,20 +146,12 @@ export const Navbar = ({
               </div>
             ) : (
               <button
-                onClick={() => onOpenAuth('login')}
+                onClick={() => onNavigate('auth', { mode: 'login' })}
                 className="px-4 py-2 text-sm font-semibold text-slate-700 hover:text-slate-900 border border-slate-200 rounded-xl hover:bg-slate-50 transition-colors"
               >
                 Sign In
               </button>
             )}
-
-            {/* List Property / Call To Action */}
-            <button
-              onClick={() => onNavigate('contact')}
-              className="px-4 py-2 text-sm font-bold bg-brand-600 hover:bg-brand-700 text-white rounded-xl shadow-sm hover:shadow-md shadow-brand-600/20 transition-all"
-            >
-              List Property
-            </button>
           </div>
 
           {/* Mobile Menu Button */}
@@ -243,19 +234,13 @@ export const Navbar = ({
               <button
                 onClick={() => {
                   setMobileMenuOpen(false);
-                  onOpenAuth('login');
+                  onNavigate('auth', { mode: 'login' });
                 }}
                 className="w-full py-2.5 text-sm font-semibold border border-slate-200 rounded-xl text-slate-800 text-center"
               >
                 Sign In / Register
               </button>
             )}
-            <button
-              onClick={() => handleLinkClick('contact')}
-              className="w-full py-2.5 text-sm font-bold bg-brand-600 text-white rounded-xl text-center shadow-md shadow-brand-600/20"
-            >
-              List Your Property
-            </button>
           </div>
         </div>
       )}

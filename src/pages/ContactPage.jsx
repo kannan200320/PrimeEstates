@@ -25,11 +25,13 @@ export const ContactPage = ({ onShowToast }) => {
   const handleSubmit = (e) => {
     e.preventDefault();
     if (!formData.name || !formData.email || !formData.message) {
-      onShowToast('Please fill out all required fields.', 'error');
+      if (onShowToast) onShowToast('Please fill out all required fields.', 'error');
       return;
     }
 
-    onShowToast(`Thank you, ${formData.name}! Your message regarding "${formData.inquiryType}" has been delivered to our Senior Advisory Committee.`);
+    if (onShowToast) {
+      onShowToast(`Thank you, ${formData.name}! Your message regarding "${formData.inquiryType}" has been delivered to our Senior Advisory Committee.`);
+    }
     setFormData({
       name: '',
       email: '',
@@ -40,131 +42,91 @@ export const ContactPage = ({ onShowToast }) => {
     });
   };
 
-  const offices = [
-    {
-      city: 'New York Flagship',
-      address: '450 Park Avenue, 28th Floor',
-      state: 'New York, NY 10022',
-      phone: '+1 (212) 555-0199',
-      image: 'https://images.unsplash.com/photo-1496442226666-8d4d0e62e6e9?auto=format&fit=crop&w=600&q=80'
-    },
-    {
-      city: 'Beverly Hills Atelier',
-      address: '9601 Wilshire Boulevard, Penthouse Suite',
-      state: 'Beverly Hills, CA 90210',
-      phone: '+1 (310) 555-0288',
-      image: 'https://images.unsplash.com/photo-1580655653885-65763b2597d0?auto=format&fit=crop&w=600&q=80'
-    },
-    {
-      city: 'Miami Coastal Gallery',
-      address: '1111 Lincoln Road, Suite 700',
-      state: 'Miami Beach, FL 33139',
-      phone: '+1 (305) 555-0377',
-      image: 'https://images.unsplash.com/photo-1533106497176-45ae19e68ba2?auto=format&fit=crop&w=600&q=80'
-    }
-  ];
-
   return (
     <div className="bg-slate-50 min-h-screen py-12">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Header */}
         <div className="text-center max-w-3xl mx-auto mb-16">
-          <span className="text-xs font-bold uppercase tracking-widest text-brand-600 bg-brand-50 px-3 py-1 rounded-full border border-brand-200">
-            Confidential Client Concierge
+          <span className="text-xs font-bold uppercase tracking-widest text-brand-600">
+            Private Client Services
           </span>
-          <h1 className="text-3xl sm:text-5xl font-extrabold text-slate-900 tracking-tight mt-3">
-            Let's Discuss Your Real Estate Vision
+          <h1 className="text-3xl sm:text-5xl font-extrabold text-slate-900 tracking-tight mt-2">
+            Connect With Our Advisory Concierge
           </h1>
           <p className="text-sm text-slate-500 mt-3 leading-relaxed">
-            Whether seeking an off-market trophy property, scheduling a private jet tour, or requesting a confidential estate appraisal, our Senior Partners are here to serve.
+            Whether inquiring about an architectural acquisition, bespoke estate disposition, or portfolio advisory, our team handles all communications with discretion.
           </p>
         </div>
 
-        {/* 2-Column: Form & Contact Info */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 mb-20">
+        {/* 2-Column Contact Section */}
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 mb-20">
           
-          {/* Contact Information Sidebar */}
-          <div className="lg:col-span-5 space-y-6">
-            
-            <div className="bg-slate-900 text-white p-8 rounded-3xl shadow-xl space-y-6 relative overflow-hidden">
-              <div className="absolute top-0 right-0 w-32 h-32 bg-brand-500/10 rounded-full blur-2xl"></div>
-
-              <div>
-                <h3 className="text-xl font-bold tracking-tight text-white">Direct Communication</h3>
-                <p className="text-xs text-slate-400 mt-1">Available 7 days a week for discrete private representation.</p>
-              </div>
-
-              <div className="space-y-4 pt-2 text-xs">
-                <div className="flex items-start gap-3.5">
-                  <div className="p-2.5 rounded-xl bg-slate-800 text-brand-400 border border-slate-700">
-                    <PhoneIcon className="w-4 h-4" />
+          {/* Left Column: Direct Concierge Information */}
+          <div className="lg:col-span-5 space-y-8">
+            <div className="bg-white p-8 rounded-3xl border border-slate-200/80 shadow-xs space-y-6">
+              <h3 className="text-xl font-bold text-slate-900">Direct Communication Channels</h3>
+              
+              <div className="space-y-4">
+                <div className="flex items-start gap-4">
+                  <div className="p-3 bg-brand-50 text-brand-600 rounded-2xl flex-shrink-0">
+                    <PhoneIcon className="w-5 h-5" />
                   </div>
                   <div>
-                    <p className="text-slate-400 font-semibold uppercase text-[10px]">Toll-Free Concierge</p>
-                    <p className="text-sm font-bold text-white mt-0.5">+1 (800) 555-REAL</p>
-                    <p className="text-[11px] text-slate-500">Mon - Sun: 8:00 AM - 9:00 PM EST</p>
+                    <p className="text-xs font-bold uppercase tracking-wider text-slate-400">Direct Concierge Line</p>
+                    <p className="text-base font-extrabold text-slate-900 mt-0.5">+1 (800) 555-PRIME</p>
+                    <p className="text-xs text-slate-500">24/7 dedicated private client support</p>
                   </div>
                 </div>
 
-                <div className="flex items-start gap-3.5">
-                  <div className="p-2.5 rounded-xl bg-slate-800 text-brand-400 border border-slate-700">
-                    <MailIcon className="w-4 h-4" />
+                <div className="flex items-start gap-4">
+                  <div className="p-3 bg-brand-50 text-brand-600 rounded-2xl flex-shrink-0">
+                    <MailIcon className="w-5 h-5" />
                   </div>
                   <div>
-                    <p className="text-slate-400 font-semibold uppercase text-[10px]">Private Inquiries</p>
-                    <p className="text-sm font-bold text-white mt-0.5">concierge@primeestates.com</p>
-                    <p className="text-[11px] text-slate-500">Encrypted transmission & confidentiality assured</p>
+                    <p className="text-xs font-bold uppercase tracking-wider text-slate-400">Confidential Email</p>
+                    <p className="text-base font-extrabold text-slate-900 mt-0.5">concierge@primeestates.com</p>
+                    <p className="text-xs text-slate-500">Average response within 1 hour</p>
                   </div>
                 </div>
 
-                <div className="flex items-start gap-3.5">
-                  <div className="p-2.5 rounded-xl bg-slate-800 text-brand-400 border border-slate-700">
-                    <MapPinIcon className="w-4 h-4" />
+                <div className="flex items-start gap-4">
+                  <div className="p-3 bg-brand-50 text-brand-600 rounded-2xl flex-shrink-0">
+                    <MapPinIcon className="w-5 h-5" />
                   </div>
                   <div>
-                    <p className="text-slate-400 font-semibold uppercase text-[10px]">Flagship Office</p>
-                    <p className="text-sm font-bold text-white mt-0.5">450 Park Avenue, Suite 2800</p>
-                    <p className="text-[11px] text-slate-500">New York, NY 10022</p>
+                    <p className="text-xs font-bold uppercase tracking-wider text-slate-400">Headquarters</p>
+                    <p className="text-base font-extrabold text-slate-900 mt-0.5">450 Park Avenue, 28th Floor</p>
+                    <p className="text-xs text-slate-500">New York, NY 10022</p>
                   </div>
                 </div>
               </div>
 
-              <div className="pt-4 border-t border-slate-800">
-                <p className="text-[11px] text-slate-400 leading-relaxed">
-                  PrimeEstates respects and upholds strict non-disclosure agreements (NDAs) for high-profile clients and public figures upon request.
-                </p>
+              {/* Service Commitments */}
+              <div className="pt-6 border-t border-slate-100 space-y-3">
+                <h4 className="text-xs font-bold text-slate-900 uppercase tracking-wider">Client Assurances</h4>
+                {[
+                  'Strict confidentiality agreements and discrete representation',
+                  'Verified titles and background portfolio verification',
+                  'Immediate direct broker response'
+                ].map((text, idx) => (
+                  <div key={idx} className="flex items-center gap-2 text-xs text-slate-600">
+                    <CheckIcon className="w-4 h-4 text-emerald-600 flex-shrink-0" />
+                    <span>{text}</span>
+                  </div>
+                ))}
               </div>
             </div>
-
-            {/* Quick Benefits Card */}
-            <div className="bg-white p-6 rounded-2xl border border-slate-200 shadow-xs space-y-3">
-              <h4 className="text-xs font-bold text-slate-800 uppercase tracking-wider">What to Expect</h4>
-              {[
-                'Response from a Licensed Partner within 2 hours',
-                'Comprehensive Comparative Market Analysis (CMA)',
-                'Access to off-market non-MLS luxury pocket inventory',
-                'Direct coordination with your legal and tax advisors'
-              ].map((text, idx) => (
-                <div key={idx} className="flex items-center gap-2 text-xs text-slate-600">
-                  <span className="p-0.5 bg-brand-50 text-brand-600 rounded">
-                    <CheckIcon className="w-3.5 h-3.5" />
-                  </span>
-                  <span>{text}</span>
-                </div>
-              ))}
-            </div>
-
           </div>
 
-          {/* Interactive Form */}
+          {/* Right Column: Confidential Inquiry Form */}
           <div className="lg:col-span-7">
-            <div className="bg-white p-8 sm:p-10 rounded-3xl border border-slate-200/80 shadow-md">
-              <h2 className="text-2xl font-extrabold text-slate-900 mb-2">
-                Send Us a Message
-              </h2>
-              <p className="text-xs text-slate-500 mb-6">
-                Fill in the details below and a dedicated advisory partner will contact you promptly.
+            <div className="bg-white p-8 sm:p-10 rounded-3xl border border-slate-200/80 shadow-xs">
+              <h3 className="text-xl font-bold text-slate-900 mb-2">
+                Send a Confidential Inquiry
+              </h3>
+              <p className="text-xs text-slate-500 mb-6 leading-relaxed">
+                Complete the brief form below and a senior advisor specializing in your requirements will contact you directly.
               </p>
 
               <form onSubmit={handleSubmit} className="space-y-4">
@@ -184,7 +146,7 @@ export const ContactPage = ({ onShowToast }) => {
                         key={type}
                         type="button"
                         onClick={() => setFormData({ ...formData, inquiryType: type })}
-                        className={`py-2 px-3 text-xs font-semibold rounded-xl border text-left transition-all ${
+                        className={`py-2 px-3 text-xs font-semibold rounded-xl border text-left transition-all cursor-pointer ${
                           formData.inquiryType === type
                             ? 'border-brand-600 bg-brand-50 text-brand-700 font-bold'
                             : 'border-slate-200 text-slate-600 hover:bg-slate-50'
@@ -273,7 +235,7 @@ export const ContactPage = ({ onShowToast }) => {
 
                 <button
                   type="submit"
-                  className="w-full py-3 bg-brand-600 hover:bg-brand-700 text-white font-bold text-xs rounded-xl shadow-md shadow-brand-600/20 transition-all flex items-center justify-center gap-2"
+                  className="w-full py-3 bg-brand-600 hover:bg-brand-700 text-white font-bold text-xs rounded-xl shadow-md shadow-brand-600/20 transition-all flex items-center justify-center gap-2 cursor-pointer"
                 >
                   <span>Submit Confidential Inquiry</span>
                   <ArrowRightIcon className="w-4 h-4" />
@@ -284,34 +246,7 @@ export const ContactPage = ({ onShowToast }) => {
 
         </div>
 
-        {/* Global Office Locations Grid */}
-        <div className="mb-20">
-          <div className="text-center mb-10">
-            <h2 className="text-2xl font-extrabold text-slate-900">Our National Advisory Ateliers</h2>
-            <p className="text-xs text-slate-500 mt-1">Visit our private client consultation salons in prime locations.</p>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            {offices.map((off, idx) => (
-              <div key={idx} className="bg-white rounded-2xl overflow-hidden border border-slate-200 shadow-sm">
-                <div className="h-44 overflow-hidden relative">
-                  <img src={off.image} alt={off.city} className="w-full h-full object-cover" />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
-                  <span className="absolute bottom-3 left-4 text-white font-bold text-base drop-shadow-md">
-                    {off.city}
-                  </span>
-                </div>
-                <div className="p-5 text-xs space-y-1.5 text-slate-600">
-                  <p className="font-semibold text-slate-900">{off.address}</p>
-                  <p>{off.state}</p>
-                  <p className="text-brand-600 font-bold pt-1">{off.phone}</p>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-
-        {/* FAQ Accordion */}
+        {/* FAQ Accordion - Strictly 3 FAQs per user requirement */}
         <div className="max-w-4xl mx-auto bg-white p-8 sm:p-12 rounded-3xl border border-slate-200/80 shadow-xs">
           <div className="text-center mb-8">
             <span className="text-xs font-bold uppercase tracking-wider text-brand-600">Got Questions?</span>
@@ -319,7 +254,7 @@ export const ContactPage = ({ onShowToast }) => {
           </div>
 
           <div className="space-y-3">
-            {FAQS.map((faq, index) => {
+            {FAQS.slice(0, 3).map((faq, index) => {
               const isOpen = activeFaq === index;
               return (
                 <div
@@ -328,7 +263,7 @@ export const ContactPage = ({ onShowToast }) => {
                 >
                   <button
                     onClick={() => setActiveFaq(isOpen ? -1 : index)}
-                    className="w-full p-4 sm:p-5 text-left flex justify-between items-center gap-4 hover:bg-slate-50 transition-colors"
+                    className="w-full p-4 sm:p-5 text-left flex justify-between items-center gap-4 hover:bg-slate-50 transition-colors cursor-pointer"
                   >
                     <span className="text-sm font-bold text-slate-800">{faq.question}</span>
                     <span className={`transform transition-transform text-slate-400 ${isOpen ? 'rotate-180 text-brand-600' : ''}`}>
