@@ -57,7 +57,7 @@ export const SavedPropertiesPage = ({
           </div>
         ) : (
           /* Empty Favorites State */
-          <div className="bg-white rounded-3xl p-16 text-center border border-slate-200/80 shadow-xs max-w-xl mx-auto my-12">
+          <div className="bg-white rounded-3xl p-8 sm:p-16 text-center border border-slate-200/80 shadow-xs max-w-xl mx-auto my-8 sm:my-12">
             <div className="w-16 h-16 rounded-2xl bg-rose-50 text-rose-500 mx-auto flex items-center justify-center mb-4">
               <HeartIcon className="w-8 h-8 text-rose-400" />
             </div>

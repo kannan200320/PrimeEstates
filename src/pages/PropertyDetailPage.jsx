@@ -151,7 +151,7 @@ export const PropertyDetailPage = ({
 
         {/* Dynamic Image Gallery - Exactly 3 Images */}
         <div className="space-y-3 mb-10">
-          <div className="relative h-[360px] sm:h-[480px] lg:h-[540px] rounded-3xl overflow-hidden shadow-lg bg-slate-900">
+          <div className="relative h-64 sm:h-[440px] lg:h-[540px] rounded-2xl sm:rounded-3xl overflow-hidden shadow-lg bg-slate-900">
             <img
               src={galleryImages[activeImageIndex] || galleryImages[0]}
               alt={property.title}
@@ -159,19 +159,19 @@ export const PropertyDetailPage = ({
             />
             <button
               onClick={() => setIsLightboxOpen(true)}
-              className="absolute bottom-5 right-5 px-4 py-2 bg-slate-950/80 hover:bg-slate-900 text-white text-xs font-bold rounded-xl backdrop-blur-md border border-white/20 transition-all flex items-center gap-2 cursor-pointer"
+              className="absolute bottom-4 right-4 sm:bottom-5 sm:right-5 px-3 sm:px-4 py-1.5 sm:py-2 bg-slate-950/80 hover:bg-slate-900 text-white text-xs font-bold rounded-xl backdrop-blur-md border border-white/20 transition-all flex items-center gap-2 cursor-pointer"
             >
               <span>View All 3 Photos</span>
             </button>
           </div>
 
           {/* Exactly 3 Thumbnails Row */}
-          <div className="grid grid-cols-3 gap-3 sm:gap-4">
+          <div className="grid grid-cols-3 gap-2.5 sm:gap-4">
             {galleryImages.map((img, idx) => (
               <div
                 key={idx}
                 onClick={() => setActiveImageIndex(idx)}
-                className={`h-24 sm:h-32 rounded-2xl overflow-hidden cursor-pointer border-2 transition-all ${
+                className={`h-20 sm:h-28 lg:h-32 rounded-xl sm:rounded-2xl overflow-hidden cursor-pointer border-2 transition-all ${
                   activeImageIndex === idx ? 'border-brand-600 ring-2 ring-brand-500/30 scale-[1.01]' : 'border-transparent opacity-75 hover:opacity-100'
                 }`}
               >
@@ -182,8 +182,8 @@ export const PropertyDetailPage = ({
         </div>
 
         {/* Key Specs Bar */}
-        <div className="bg-white p-6 rounded-2xl border border-slate-200/80 shadow-xs mb-10">
-          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-6 text-center">
+        <div className="bg-white p-4 sm:p-6 rounded-2xl border border-slate-200/80 shadow-xs mb-10">
+          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-4 sm:gap-6 text-center">
             <div className="border-r border-slate-100 last:border-none">
               <div className="flex items-center justify-center text-brand-600 mb-1">
                 <BedIcon className="w-5 h-5" />

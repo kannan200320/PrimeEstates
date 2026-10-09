@@ -40,28 +40,28 @@ export const HomePage = ({
         </div>
 
         {/* Hero Content */}
-        <div className="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-20 text-center">
+        <div className="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-24 text-center">
           
-          <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-white tracking-tight leading-tight max-w-4xl mx-auto">
+          <h1 className="text-3xl sm:text-5xl lg:text-6xl font-extrabold text-white tracking-tight leading-tight max-w-4xl mx-auto">
             Discover Your Extraordinary <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 via-teal-300 to-cyan-300">Sanctuary</span>
           </h1>
 
-          <p className="mt-5 text-base sm:text-lg text-slate-300 max-w-2xl mx-auto font-normal leading-relaxed">
+          <p className="mt-4 sm:mt-5 text-sm sm:text-base lg:text-lg text-slate-300 max-w-2xl mx-auto font-normal leading-relaxed px-2">
             The premier portfolio of bespoke waterfront residences, skyline penthouses, and private architectural estates across prime international markets.
           </p>
 
-          {/* Hero Action Buttons */}
-          <div className="mt-10 flex flex-wrap items-center justify-center gap-4">
+          {/* Hero Action Buttons - Responsive on mobile & laptop */}
+          <div className="mt-8 sm:mt-10 flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4 max-w-sm sm:max-w-none mx-auto w-full">
             <button
               onClick={() => onNavigate('properties')}
-              className="px-8 py-3.5 bg-brand-600 hover:bg-brand-500 text-white font-bold text-sm rounded-xl shadow-xl shadow-brand-600/30 transition-all flex items-center gap-2 cursor-pointer"
+              className="w-full sm:w-auto px-6 sm:px-8 py-3.5 bg-brand-600 hover:bg-brand-500 text-white font-bold text-sm rounded-xl shadow-xl shadow-brand-600/30 transition-all flex items-center justify-center gap-2 cursor-pointer"
             >
               <span>Explore All Residences</span>
               <ArrowRightIcon className="w-4 h-4" />
             </button>
             <button
               onClick={() => onNavigate('contact')}
-              className="px-8 py-3.5 bg-white/10 hover:bg-white/20 text-white border border-white/20 font-bold text-sm rounded-xl backdrop-blur-md transition-all cursor-pointer"
+              className="w-full sm:w-auto px-6 sm:px-8 py-3.5 bg-white/10 hover:bg-white/20 text-white border border-white/20 font-bold text-sm rounded-xl backdrop-blur-md transition-all cursor-pointer"
             >
               Private Consultation
             </button>
