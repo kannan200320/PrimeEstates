@@ -1,0 +1,9 @@
+/* PrimeEstates Global Custom Enhancements */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Custom transitions and scroll behaviors */
+img {
+  max-width: 100%;
+}
