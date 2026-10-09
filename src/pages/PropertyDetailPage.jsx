@@ -219,7 +219,7 @@ export const PropertyDetailPage = ({
             <div className="border-r border-slate-100 last:border-none">
               <p className="text-xs text-slate-400 font-semibold uppercase tracking-wider mb-2">Year Built</p>
               <p className="text-xl font-extrabold text-slate-900">{property.yearBuilt}</p>
-              <p className="text-[10px] text-emerald-600 font-bold">Turnkey Condition</p>
+              <p className="text-[10px] text-blue-600 font-bold">Turnkey Condition</p>
             </div>
 
             <div>
@@ -270,7 +270,7 @@ export const PropertyDetailPage = ({
               </div>
               <div className="p-3.5 rounded-xl bg-slate-50 border border-slate-100">
                 <p className="text-[11px] font-semibold text-slate-400 uppercase tracking-wider">Status</p>
-                <p className="text-sm font-bold text-emerald-600 mt-0.5">{property.status}</p>
+                <p className="text-sm font-bold text-blue-600 mt-0.5">{property.status}</p>
               </div>
               <div className="p-3.5 rounded-xl bg-slate-50 border border-slate-100">
                 <p className="text-[11px] font-semibold text-slate-400 uppercase tracking-wider">Year Built</p>

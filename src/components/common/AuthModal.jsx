@@ -112,15 +112,15 @@ export const AuthModal = ({ isOpen, onClose, initialMode = 'login', onAuthSucces
           )}
 
           {/* Quick Demo Login Option */}
-          <div className="p-3 bg-emerald-50 rounded-xl border border-emerald-100 flex items-center justify-between">
+          <div className="p-3 bg-blue-50 rounded-xl border border-blue-100 flex items-center justify-between">
             <div>
-              <p className="text-xs font-bold text-emerald-900">Preview Demo Profile</p>
-              <p className="text-[11px] text-emerald-700">Explore immediately with 1-click</p>
+              <p className="text-xs font-bold text-blue-900">Preview Demo Profile</p>
+              <p className="text-[11px] text-blue-700">Explore immediately with 1-click</p>
             </div>
             <button
               type="button"
               onClick={handleDemoLogin}
-              className="text-xs bg-emerald-600 hover:bg-emerald-700 text-white font-medium px-3 py-1.5 rounded-lg transition-colors shadow-sm"
+              className="text-xs bg-blue-600 hover:bg-blue-700 text-white font-medium px-3 py-1.5 rounded-lg transition-colors shadow-sm"
             >
               One-Click Demo
             </button>

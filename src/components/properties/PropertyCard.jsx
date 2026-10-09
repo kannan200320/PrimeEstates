@@ -106,7 +106,7 @@ export const PropertyCard = ({
 
           {/* Action Row */}
           <div className="mt-4 pt-3 flex items-center justify-between">
-            <span className="text-[11px] font-medium text-emerald-700 bg-emerald-50 px-2 py-0.5 rounded">
+            <span className="text-[11px] font-medium text-blue-700 bg-blue-50 px-2 py-0.5 rounded">
               Verified Title
             </span>
             <button

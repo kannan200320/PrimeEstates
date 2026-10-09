@@ -12,7 +12,7 @@ export const AgentCard = ({ agent, onSelectAgent }) => {
             alt="" 
             className="w-full h-full object-cover opacity-60 group-hover:scale-105 transition-transform duration-500" 
           />
-          <div className="absolute top-2.5 right-2.5 bg-slate-900/80 backdrop-blur-md px-2.5 py-1 rounded-full text-[11px] font-semibold text-emerald-400 border border-slate-700">
+          <div className="absolute top-2.5 right-2.5 bg-slate-900/80 backdrop-blur-md px-2.5 py-1 rounded-full text-[11px] font-semibold text-blue-400 border border-slate-700">
             Verified Broker
           </div>
         </div>

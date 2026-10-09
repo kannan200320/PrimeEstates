@@ -119,12 +119,12 @@ export const AuthPage = ({ initialMode = 'login', onAuthSuccess, onNavigate }) =
         </button>
       </div>
 
-      {/* Auth Card (Bright Mode with Emerald / Green Branding) */}
+      {/* Auth Card (Bright Mode with Blue Branding) */}
       <div className="w-full max-w-md bg-white border border-slate-200/90 rounded-3xl p-6 sm:p-8 shadow-xl shadow-slate-200/60 relative z-10">
         
         {/* Card Header with Logo */}
         <div className="flex items-center gap-2.5 mb-6">
-          <div className="w-10 h-10 rounded-xl bg-gradient-to-tr from-brand-700 via-brand-600 to-emerald-400 flex items-center justify-center text-white shadow-md shadow-brand-500/20">
+          <div className="w-10 h-10 rounded-xl bg-gradient-to-tr from-brand-700 via-brand-600 to-blue-400 flex items-center justify-center text-white shadow-md shadow-brand-500/20">
             <HomeLogoIcon className="w-5 h-5 text-white" />
           </div>
           <span className="text-xl font-extrabold tracking-tight text-slate-900">
@@ -144,7 +144,7 @@ export const AuthPage = ({ initialMode = 'login', onAuthSuccess, onNavigate }) =
           </p>
         </div>
 
-        {/* Tab Switcher (Sign In / Register with Green Buttons) */}
+        {/* Tab Switcher (Sign In / Register with Blue Buttons) */}
         <div className="grid grid-cols-2 bg-slate-100 p-1 rounded-2xl border border-slate-200 mb-6">
           <button
             type="button"
@@ -180,7 +180,7 @@ export const AuthPage = ({ initialMode = 'login', onAuthSuccess, onNavigate }) =
 
         {/* Inline Success Notice (No Popups!) */}
         {successMessage && (
-          <div className="p-3 mb-4 text-xs font-medium bg-emerald-50 border border-emerald-200 text-emerald-700 rounded-xl flex items-center gap-2">
+          <div className="p-3 mb-4 text-xs font-medium bg-blue-50 border border-blue-200 text-blue-700 rounded-xl flex items-center gap-2">
             <span className="w-1.5 h-1.5 rounded-full bg-brand-500 flex-shrink-0"></span>
             <span>{successMessage}</span>
           </div>
@@ -188,7 +188,7 @@ export const AuthPage = ({ initialMode = 'login', onAuthSuccess, onNavigate }) =
 
         {/* Inline Password Reset Info (No Popups!) */}
         {resetSent && (
-          <div className="p-3 mb-4 text-xs font-medium bg-emerald-50 border border-emerald-200 text-emerald-700 rounded-xl flex items-center gap-2">
+          <div className="p-3 mb-4 text-xs font-medium bg-blue-50 border border-blue-200 text-blue-700 rounded-xl flex items-center gap-2">
             <span className="w-1.5 h-1.5 rounded-full bg-brand-500 flex-shrink-0"></span>
             <span>Password reset instructions have been dispatched to your email.</span>
           </div>
@@ -274,7 +274,7 @@ export const AuthPage = ({ initialMode = 'login', onAuthSuccess, onNavigate }) =
             </div>
           )}
 
-          {/* Primary Action Button (Green Button) */}
+          {/* Primary Action Button (Blue Button) */}
           <button
             type="submit"
             className="w-full py-3.5 px-4 bg-brand-600 hover:bg-brand-700 active:bg-brand-800 text-white font-extrabold text-xs uppercase tracking-wider rounded-xl transition-all shadow-md shadow-brand-500/20 mt-4 cursor-pointer"

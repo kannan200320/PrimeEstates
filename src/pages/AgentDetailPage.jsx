@@ -170,7 +170,7 @@ export const AgentDetailPage = ({
                     Broker Credential
                   </h4>
                   <p className="text-xs font-semibold text-slate-800">{agent.license}</p>
-                  <p className="text-[11px] text-emerald-600 font-medium">Active & Standing with Department of Real Estate</p>
+                  <p className="text-[11px] text-blue-600 font-medium">Active & Standing with Department of Real Estate</p>
                 </div>
               </div>
             </div>
