@@ -1,5 +1,5 @@
 import React from 'react';
-import { StarIcon, PhoneIcon, MailIcon, AwardIcon } from '../common/Icons';
+import { StarIcon } from '../common/Icons';
 
 export const AgentCard = ({ agent, onSelectAgent }) => {
   return (
@@ -59,25 +59,11 @@ export const AgentCard = ({ agent, onSelectAgent }) => {
         </div>
       </div>
 
-      {/* Footer Contact Actions */}
-      <div className="px-6 pb-6 pt-2 border-t border-slate-100 flex items-center gap-2">
-        <a
-          href={`tel:${agent.phone}`}
-          className="p-2.5 rounded-xl border border-slate-200 text-slate-600 hover:text-brand-600 hover:border-brand-300 hover:bg-brand-50 transition-colors"
-          title={`Call ${agent.phone}`}
-        >
-          <PhoneIcon className="w-4 h-4" />
-        </a>
-        <a
-          href={`mailto:${agent.email}`}
-          className="p-2.5 rounded-xl border border-slate-200 text-slate-600 hover:text-brand-600 hover:border-brand-300 hover:bg-brand-50 transition-colors"
-          title={`Email ${agent.email}`}
-        >
-          <MailIcon className="w-4 h-4" />
-        </a>
+      {/* Footer Contact Action Button */}
+      <div className="px-6 pb-6 pt-2 border-t border-slate-100">
         <button
           onClick={() => onSelectAgent(agent.id)}
-          className="flex-1 py-2 text-xs font-bold bg-slate-900 hover:bg-brand-600 text-white rounded-xl transition-all shadow-xs"
+          className="w-full py-2.5 text-xs font-bold bg-slate-900 hover:bg-brand-600 text-white rounded-xl transition-all shadow-xs cursor-pointer"
         >
           View Profile & Listings
         </button>
